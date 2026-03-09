@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Right Play Foundation - Empowering athletes through mentorship during NCAA transitions">
+    <title>Right Play Foundation - Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --yellow: #FFD60A;
+            --black: #0A0A0A;
+            --grey: #6B7280;
+            --light-grey: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background elements */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .bg-circle-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--yellow);
+            top: -100px;
+            right: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--yellow);
+            bottom: -50px;
+            left: -50px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo */
+        .logo {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 0 auto 50px;
+            filter: drop-shadow(0 10px 30px rgba(255, 214, 10, 0.2));
+        }
+
+        /* Main heading */
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .highlight {
+            color: var(--yellow);
+        }
+
+        /* Tagline */
+        .tagline {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--light-grey);
+            margin-bottom: 40px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Description */
+        .description {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.8;
+            color: #D1D5DB;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Email section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 214, 10, 0.2);
+            margin-top: 50px;
+        }
+
+        .contact-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--yellow);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .email-link {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+
+        .email-link:hover {
+            color: var(--yellow);
+            border-bottom-color: var(--yellow);
+            transform: translateY(-2px);
+        }
+
+        /* Social placeholder */
+        .social-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-label {
+            font-size: 0.9rem;
+            color: var(--grey);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 214, 10, 0.1);
+            border-color: var(--yellow);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: var(--grey);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .contact-section {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+
+    <div class="container">
+        <!-- Logo -->
+        <svg class="logo" viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg">
+            <g id="icon-mark">
+                <circle cx="50" cy="80" r="28" fill="none" stroke="#FFD60A" stroke-width="6"/>
+                <circle cx="50" cy="80" r="14" fill="#FFFFFF"/>
+                <circle cx="110" cy="80" r="22" fill="none" stroke="#E5E7EB" stroke-width="5"/>
+                <circle cx="110" cy="80" r="11" fill="#FFFFFF"/>
+                <line x1="70" y1="80" x2="92" y2="80" stroke="#FFD60A" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <text x="160" y="100" font-family="'Bebas Neue', sans-serif" font-size="72" fill="#FFFFFF" letter-spacing="4">RIGHT PLAY</text>
+            <text x="162" y="130" font-family="'Inter', sans-serif" font-weight="600" font-size="20" fill="#E5E7EB" letter-spacing="6">FOUNDATION</text>
+        </svg>
+
+        <!-- Main content -->
+        <h1>Coming <span class="highlight">Soon</span></h1>
+        <div class="tagline">Empowering Athletes Through Every Transition</div>
+        
+        <div class="description">
+            We're building a mentorship network that connects current and transitioning NCAA athletes with former collegiate athletes who've navigated the same challenges. Because the right guidance at the right moment changes everything.
+        </div>
+
+        <!-- Contact section -->
+        <div class="contact-section">
+            <div class="contact-label">Get In Touch</div>
+            <a href="mailto:rightplayfoundation@gmail.com" class="email-link">rightplayfoundation@gmail.com</a>
+            
+            <div class="social-section">
+                <div class="social-label">Connect With Us</div>
+                <div class="social-links">
+                    <!-- Add your social media links here when ready -->
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                        </svg>
+                        Twitter
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Right Play Foundation &copy; 2026 | Registered Canadian Non-Profit</p>
+        </div>
+    </div>
+</body>
+</html>
