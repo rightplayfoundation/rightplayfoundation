@@ -118,7 +118,7 @@
             margin-right: auto;
         }
 
-        /* Email section */
+        /* Contact form section */
         .contact-section {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -133,35 +133,104 @@
             font-size: 1.2rem;
             letter-spacing: 2px;
             color: var(--yellow);
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
 
-        .email-display {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            color: white;
-            font-weight: 600;
-            margin-bottom: 20px;
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .contact-button {
-            display: inline-block;
-            padding: 15px 40px;
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--light-grey);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--yellow);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--grey);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px 40px;
             background: var(--yellow);
             color: var(--black);
-            text-decoration: none;
+            border: none;
             font-weight: 700;
             font-size: 1.1rem;
             border-radius: 8px;
+            cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
         }
 
-        .contact-button:hover {
+        .submit-button:hover {
             background: #FFC300;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(255, 214, 10, 0.3);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
         }
 
         /* Footer */
@@ -214,14 +283,60 @@
         <!-- Contact section -->
         <div class="contact-section">
             <div class="contact-label">Get In Touch</div>
-            <div class="email-display" id="email"></div>
-            <a href="mailto:rightplayfoundation@gmail.com" class="contact-button">Send Email</a>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about yourself and how we can help..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Message</button>
+
+                <div id="formMessage" class="form-message"></div>
+            </form>
         </div>
 
         <script>
-            // Display email without it being in the HTML source directly
-            const email = 'rightplayfoundation' + '@' + 'gmail.com';
-            document.getElementById('email').textContent = email;
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                const formMessage = document.getElementById('formMessage');
+                
+                // Create mailto link with form data
+                const subject = encodeURIComponent('Contact from Right Play Foundation Website');
+                const body = encodeURIComponent(
+                    `Name: ${name}\n\nEmail: ${email}\n\nMessage:\n${message}`
+                );
+                
+                const mailtoLink = `mailto:rightplayfoundation@gmail.com?subject=${subject}&body=${body}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                formMessage.textContent = 'Opening your email client...';
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
+                
+                // Reset form
+                setTimeout(() => {
+                    this.reset();
+                    formMessage.style.display = 'none';
+                }, 3000);
+            });
         </script>
 
         <!-- Footer -->
