@@ -137,20 +137,31 @@
             text-transform: uppercase;
         }
 
-        .email-link {
+        .email-display {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             color: white;
-            text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border-bottom: 2px solid transparent;
+            margin-bottom: 20px;
         }
 
-        .email-link:hover {
-            color: var(--yellow);
-            border-bottom-color: var(--yellow);
+        .contact-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--yellow);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-button:hover {
+            background: #FFC300;
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 214, 10, 0.3);
         }
 
         /* Footer */
@@ -203,7 +214,14 @@
         <!-- Contact section -->
         <div class="contact-section">
             <div class="contact-label">Get In Touch</div>
-            <a href="mailto:rightplayfoundation@gmail.com" class="email-link">rightplayfoundation@gmail.com</a>
+            <div class="email-display" id="email"></div>
+            <a href="mailto:rightplayfoundation@gmail.com" class="contact-button">Send Email</a>
         </div>
+
+        <script>
+            // Display email without it being in the HTML source directly
+            const email = 'rightplayfoundation' + '@' + 'gmail.com';
+            document.getElementById('email').textContent = email;
+        </script>
 
         <!-- Footer -->
